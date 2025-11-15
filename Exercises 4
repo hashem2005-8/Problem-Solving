@@ -1,0 +1,238 @@
+#include <iostream>
+using namespace std; 
+
+int add(int number1, int number2)
+{    
+    return number1+number2; 
+}
+
+int subtract(int number1, int number2)
+{    
+    return number1-number2; 
+}
+
+int multiply(int number1, int number2)
+{    
+    return number1*number2; 
+}
+
+int divide(int number1, int number2)
+{    
+    return number1/number2; 
+}
+
+int square(int number1)
+{    
+    return number1*number1; 
+}
+
+int factorial(int number)
+{
+    int result = 1;
+    while(number > 0)
+    {
+        result *= number;
+        number--;
+    }
+    return result;
+}
+
+void EvenOrPrime(){
+   cout<<"Enter Number: ";
+   int number;
+   cin>> number;
+
+   if(number%2==0)
+       cout<<"The "<<number<<" is Even\n";
+   else
+       cout<<"The "<<number<<" is Odd\n";
+
+   bool prime = true; // FIXED
+
+   for(int i=2; i<number; i++)
+   {
+       if(number % i == 0)
+       {
+           prime = false;
+           break;
+       }
+   }
+
+   if(!prime)
+       cout<<"The Number isn't prime\n";
+   else 
+       cout<<"The Number is prime\n";
+}
+
+void ComputeGcdAndLcm(int number1, int number2)
+{
+    int a = number1;
+    int b = number2;
+
+    while(b != 0)
+    {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    int Gcd = a;
+    int Lcm = (number1 * number2) / Gcd;
+
+    cout<<"The Gcd is: "<<Gcd<<endl;
+    cout<<"The Lcm is: "<<Lcm<<endl;
+}
+
+void computeAreas() {
+    int choice;
+    cout << "Choose a shape to compute area:\n";
+    cout << "1. Rectangle\n";
+    cout << "2. Square\n";
+    cout << "3. Triangle\n";
+    cout << "4. Circle\n";
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    switch(choice) {
+        case 1: {
+            double length, width;
+            cout << "Enter length and width: ";
+            cin >> length >> width;
+            cout << "Area of Rectangle = " << length * width << endl;
+            break;
+        }
+
+        case 2: {
+            double side;
+            cout << "Enter side length: ";
+            cin >> side;
+            cout << "Area of Square = " << side * side << endl;
+            break;
+        }
+
+        case 3: {
+            double base, height;
+            cout << "Enter base and height: ";
+            cin >> base >> height;
+            cout << "Area of Triangle = " << 0.5 * base * height << endl;
+            break;
+        }
+
+        case 4: {
+            double r;
+            cout << "Enter radius: ";
+            cin >> r;
+            cout << "Area of Circle = " << 3.14159 * r * r << endl;
+            break;
+        }
+
+        default:
+            cout << "Invalid choice!" << endl;
+    }
+}
+
+void computeSimpleInterest() {
+    double P, R, T;
+    cout << "Enter Principal (P): ";
+    cin >> P;
+    cout << "Enter Rate (R %): ";
+    cin >> R;
+    cout << "Enter Time (T in years): ";
+    cin >> T;
+
+    double SI = (P * R * T) / 100.0;
+
+    cout << "Simple Interest = " << SI << endl;
+}
+
+
+int main() {
+
+    int choice;
+
+    while(true){
+        cout << "\n===== MENU =====\n";
+        cout << "1. Add\n";
+        cout << "2. Subtract\n";
+        cout << "3. Multiply\n";
+        cout << "4. Divide\n";
+        cout << "5. Square\n";
+        cout << "6. Factorial\n";
+        cout << "7. Even or Prime\n";
+        cout << "8. Compute GCD & LCM\n";
+        cout << "9. Compute Areas\n";
+        cout << "10. Simple Interest\n";
+        cout << "0. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if(choice == 0){
+            cout << "Exiting...\n";
+            break;
+        }
+
+        int a, b;
+
+        switch(choice){
+
+            case 1:
+                cout<<"Enter two numbers: ";
+                cin>>a>>b;
+                cout<<"Result = "<<add(a,b)<<endl;
+                break;
+
+            case 2:
+                cout<<"Enter two numbers: ";
+                cin>>a>>b;
+                cout<<"Result = "<<subtract(a,b)<<endl;
+                break;
+
+            case 3:
+                cout<<"Enter two numbers: ";
+                cin>>a>>b;
+                cout<<"Result = "<<multiply(a,b)<<endl;
+                break;
+
+            case 4:
+                cout<<"Enter two numbers: ";
+                cin>>a>>b;
+                cout<<"Result = "<<divide(a,b)<<endl;
+                break;
+
+            case 5:
+                cout<<"Enter number: ";
+                cin>>a;
+                cout<<"Square = "<<square(a)<<endl;
+                break;
+
+            case 6:
+                cout<<"Enter number: ";
+                cin>>a;
+                cout<<"Factorial = "<<factorial(a)<<endl;
+                break;
+
+            case 7:
+                EvenOrPrime();
+                break;
+
+            case 8:
+                cout<<"Enter two numbers: ";
+                cin>>a>>b;
+                ComputeGcdAndLcm(a,b);
+                break;
+
+            case 9:
+                computeAreas();
+                break;
+
+            case 10:
+                computeSimpleInterest();
+                break;
+
+            default:
+                cout<<"Invalid option!\n";
+        }
+    }
+
+    return 0;
+}
