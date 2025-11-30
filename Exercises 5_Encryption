@@ -1,0 +1,79 @@
+/*
+فكرة التشفير (قانون التشفير المستخدم):
+
+يتم تشفير كل رقم في المصفوفة حسب الخطوات التالية:
+
+إضافة الرقم 15 إلى القيمة الأصلية.
+
+قسمة الناتج على 4.
+
+تربيع الناتج.
+
+ضرب الناتج في 5.
+
+طرح 100 من الناتج النهائي.
+*/
+
+#include <iostream>
+using namespace std; 
+
+int add(int number1, int number2)
+{    
+    return number1+number2; 
+}
+
+int subtract(int number1, int number2)
+{    
+    return number1-number2; 
+}
+
+int multiply(int number1, int number2)
+{    
+    return number1*number2; 
+}
+int square(int number1)
+{    
+    return number1*number1; 
+}
+
+int divide(int number1, int number2)
+{    
+    return number1/number2; 
+}
+int Encrybtion(int index)
+{
+   index= add(index,15);
+    index= divide(index,4);
+    index=square(index);
+    index= multiply(index,5);
+    index=subtract(index,100);
+    return index;
+}
+int main()
+{
+    int n;
+    cout<<"Enter size of array\n";
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cout<<"Enter Index of Array ["<<i<<"]\n";
+        cin>>arr[i];
+    }
+    for(int j=0;j<n;j++)
+    {
+        arr[j]=Encrybtion(arr[j]);
+    }
+    for(int k=0;k<n;k++)
+    {
+        cout<<"Array ["<<k<<"] = "<<arr[k]<<endl;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
